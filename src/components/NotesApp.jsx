@@ -41,15 +41,39 @@ class NotesApp extends React.Component {
   }
 
   onDeleteNoteEventHandler(id) {
-    console.log('on delete: ', id);
+    const notes = this.state.notes.filter((note) => note.id !== id);
+    this.setState({ notes });
+
+    this.filterActiveNotes();
+    this.filterArchiveNotes();
   }
 
   onArchiveNoteEventHandler(id) {
-    console.log('on archive: ', id);
+    const notes = this.state.notes.map((note) => {
+      if (note.id === id) {
+        note.archived = true;
+      }
+
+      return note;
+    })
+
+    this.setState({ notes });
+    this.filterActiveNotes();
+    this.filterArchiveNotes();
   }
 
   onActiveNoteEventHandler(id) {
-    console.log('on active: ', id);
+    const notes = this.state.notes.map((note) => {
+      if (note.id === id) {
+        note.archived = false;
+      }
+
+      return note;
+    })
+
+    this.setState({ notes });
+    this.filterActiveNotes();
+    this.filterArchiveNotes();
   }
 
   filterActiveNotes() {

@@ -17,7 +17,7 @@ function NoteItem({ id, title, createdAt, body, archived, onDelete, onArchive, o
             label='Hapus'
             id={id}
             onclick={onDelete}
-            />
+          />
           <NoteActionButton 
             type='warning'
             label='Arsipkan'
@@ -42,7 +42,7 @@ function NoteItem({ id, title, createdAt, body, archived, onDelete, onArchive, o
           label='Hapus'
           id={id}
           onclick={onDelete}
-          />
+        />
         <NoteActionButton 
           type='success'
           label='Aktifkan'
