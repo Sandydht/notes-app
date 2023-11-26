@@ -223,6 +223,18 @@ body {
   cursor: pointer;
 }
 
+.note-item__button__danger {
+  color: #BB2124;
+}
+
+.note-item__button__warning {
+  color: #F0AD4E;
+}
+
+.note-item__button__success {
+  color: #22BB33;
+}
+
 @media screen and (min-width: 662px) {
   .note-list {
     grid-template-columns: repeat(2, 1fr);

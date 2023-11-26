@@ -13,6 +13,9 @@ class NotesApp extends React.Component {
     };
 
     this.onAddNoteEventHandler = this.onAddNoteEventHandler.bind(this);
+    this.onDeleteNoteEventHandler = this.onDeleteNoteEventHandler.bind(this);
+    this.onArchiveNoteEventHandler = this.onArchiveNoteEventHandler.bind(this);
+    this.onActiveNoteEventHandler = this.onActiveNoteEventHandler.bind(this);
     this.filterActiveNotes = this.filterActiveNotes.bind(this);
     this.filterArchiveNotes = this.filterArchiveNotes.bind(this);
   }
@@ -37,6 +40,18 @@ class NotesApp extends React.Component {
     this.filterArchiveNotes();
   }
 
+  onDeleteNoteEventHandler(id) {
+    console.log('on delete: ', id);
+  }
+
+  onArchiveNoteEventHandler(id) {
+    console.log('on archive: ', id);
+  }
+
+  onActiveNoteEventHandler(id) {
+    console.log('on active: ', id);
+  }
+
   filterActiveNotes() {
     return this.state.notes.filter((note) => !note.archived);
   }
@@ -53,10 +68,16 @@ class NotesApp extends React.Component {
         <NoteContainer 
           titleContainer='Catatan Aktif' 
           notes={this.filterActiveNotes()}
+          onDelete={this.onDeleteNoteEventHandler}
+          onArchive={this.onArchiveNoteEventHandler}
+          onActive={this.onActiveNoteEventHandler}
         />
         <NoteContainer 
           titleContainer='Arsip' 
           notes={this.filterArchiveNotes()}
+          onDelete={this.onDeleteNoteEventHandler}
+          onArchive={this.onArchiveNoteEventHandler}
+          onActive={this.onActiveNoteEventHandler}
         />
       </div>
     );

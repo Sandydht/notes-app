@@ -1,7 +1,8 @@
 import React from 'react';
 import { showFormattedDate } from '../utils/index'
+import NoteActionButton from './NoteActionButton';
 
-function NoteItem({ title, createdAt, body, archived }) {
+function NoteItem({ id, title, createdAt, body, archived, onDelete, onArchive, onActive }) {
   if (!archived) {
     return (
       <div className='note-item'>
@@ -11,8 +12,18 @@ function NoteItem({ title, createdAt, body, archived }) {
           <p className='note-item__body'>{body}</p>
         </div>
         <div className='note-item__action'>
-          <button type='button' className='note-item__button'>Hapus</button>
-          <button type='button' className='note-item__button'>Arsipkan</button>
+          <NoteActionButton 
+            type='danger'
+            label='Hapus'
+            id={id}
+            onclick={onDelete}
+            />
+          <NoteActionButton 
+            type='warning'
+            label='Arsipkan'
+            id={id}
+            onclick={onArchive}
+          />
         </div>
       </div>
     );
@@ -26,8 +37,18 @@ function NoteItem({ title, createdAt, body, archived }) {
         <p className='note-item__body'>{body}</p>
       </div>
       <div className='note-item__action'>
-        <button type='button' className='note-item__button'>Hapus</button>
-        <button type='button' className='note-item__button'>Aktifkan</button>
+        <NoteActionButton 
+          type='danger'
+          label='Hapus'
+          id={id}
+          onclick={onDelete}
+          />
+        <NoteActionButton 
+          type='success'
+          label='Aktifkan'
+          id={id}
+          onclick={onActive}
+        />
       </div>
     </div>
   );
