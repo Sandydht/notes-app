@@ -1,11 +1,11 @@
 import React from 'react';
 import CreateNoteInput from './CreateNoteInput';
 
-function CreateNote() {
+function CreateNote({ addNote }) {
   return (
     <div className='create-note'>
       <h2>Buat Catatan</h2>
-      <CreateNoteInput />
+      <CreateNoteInput addNote={addNote} />
     </div>
   );
 }

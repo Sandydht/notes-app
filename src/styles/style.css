@@ -15,14 +15,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  padding: 20px;
   gap: 20px;
-  padding: 150px 20px;
 }
 
 .create-note,
-.search-notes {
+.search-notes,
+.note-container {
   width: 100%;
-  max-width: 494px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -33,8 +33,18 @@ body {
   border-radius: 10px;
 }
 
+.create-note,
+.search-notes {
+  max-width: 494px;
+}
+
+.note-container {
+  max-width: 966px;
+}
+
 .create-note h2,
-.search-notes h2 {
+.search-notes h2,
+.note-container h2 {
   font-size: 24px;
   color: #000000;
   font-weight: 700;
@@ -131,4 +141,102 @@ body {
   font-weight: 700;
   font-size: 12px;
   cursor: pointer;
+}
+
+.note-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.note-container__empty-message {
+  font-size: 12px;
+  color: #000000;
+}
+
+.note-item {
+  width: 100%;
+  height: auto;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+.note-item__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+  padding: 20px;
+}
+
+.note-item__title {
+  font-size: 16px;
+  color: #000000;
+  font-weight: 700;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.note-item__subtitle {
+  font-size: 12px;
+  color: #000000;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.note-item__body {
+  font-size: 12px;
+  color: #000000;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.note-item__action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.note-item__button {
+  width: 100%;
+  height: 100%;
+  min-height: 44px;
+  max-height: 44px;
+  outline: none;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 662px) {
+  .note-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .note-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .note-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
