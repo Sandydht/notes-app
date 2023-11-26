@@ -45,7 +45,7 @@ function NoteItem({ id, title, createdAt, body, archived, onDelete, onArchive, o
         />
         <NoteActionButton 
           type='success'
-          label='Aktifkan'
+          label='Pindahkan'
           id={id}
           onclick={onActive}
         />

@@ -16,6 +16,7 @@ class NotesApp extends React.Component {
     this.onDeleteNoteEventHandler = this.onDeleteNoteEventHandler.bind(this);
     this.onArchiveNoteEventHandler = this.onArchiveNoteEventHandler.bind(this);
     this.onActiveNoteEventHandler = this.onActiveNoteEventHandler.bind(this);
+    this.onSearchNoteEventHandler = this.onSearchNoteEventHandler.bind(this);
     this.filterActiveNotes = this.filterActiveNotes.bind(this);
     this.filterArchiveNotes = this.filterArchiveNotes.bind(this);
   }
@@ -76,6 +77,18 @@ class NotesApp extends React.Component {
     this.filterArchiveNotes();
   }
 
+  onSearchNoteEventHandler(title) {
+    if (title) {
+      const notes = this.state.notes.filter((note) => note.title.toLowerCase().includes(title.toLowerCase()));
+      this.setState({ notes });
+    } else {
+      this.setState({ notes: getInitialData() });
+    }
+
+    this.filterActiveNotes();
+    this.filterArchiveNotes();
+  }
+
   filterActiveNotes() {
     return this.state.notes.filter((note) => !note.archived);
   }
@@ -88,7 +101,7 @@ class NotesApp extends React.Component {
     return (
       <div className='notes-app'>
         <CreateNote addNote={this.onAddNoteEventHandler} />
-        <SearchNotes />
+        <SearchNotes searchNote={this.onSearchNoteEventHandler} />
         <NoteContainer 
           titleContainer='Catatan Aktif' 
           notes={this.filterActiveNotes()}
